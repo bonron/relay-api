@@ -6,6 +6,7 @@ import com.bontech.tools.relay.model.Request;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 @Service
 public class Logger {
@@ -19,8 +20,8 @@ public class Logger {
         }
     }
 
-    public void log(Exception exception){
-        System.out.println("Exception = " + exception);
+    public void log(Exception exception, String... args){
+        System.out.println("Exception = " + exception + "\n" + Arrays.stream(args).collect(Collectors.joining("\n")));
     }
 
     public synchronized void logRequest(Request request){

@@ -1,10 +1,12 @@
 package com.bontech.tools.relay.utils;
 
+import com.bontech.tools.relay.model.Proxy;
 import com.bontech.tools.relay.model.Request;
 import com.bontech.tools.relay.model.Response;
 import com.bontech.tools.relay.model.enums.BodyTypes;
 import com.bontech.tools.relay.model.enums.RequestMethods;
 import com.bontech.tools.relay.repository.ProxyRepository;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -22,22 +24,24 @@ public class Sender {
 
     final ProxyRepository proxyRepository;
 
-    public Sender(Logger logger) {
+    final Environment environment;
+
+    public Sender(Logger logger, Environment environment) {
         this.logger = logger;
         proxyRepository = ProxyRepository.getInstance();
+        this.environment = environment;
     }
 
     public Response send(Request request) {
         var response = new Response();
-        if (proxyRepository.getProxies().stream().anyMatch(x->x.getRequest().equals(request)) && proxyRepository.getProxies().stream().anyMatch(x -> x.allowOverride() && x.getResponses().stream().allMatch(y -> y.getBodyType() == BodyTypes.STRING))){
-            var ret = proxyRepository.getProxies().stream().filter(x -> x.getRequest().equals(request)).findFirst().map(x -> x.getActiveResponse()).get();
+        if (proxyRepository.getProxies().stream().anyMatch(x -> x.getRequest().equals(request)) && proxyRepository.getProxies().stream().anyMatch(x -> x.allowOverride() && x.getResponses().stream().allMatch(y -> y.getBodyType() == BodyTypes.STRING))) {
+            var ret = proxyRepository.getProxies().stream().filter(x -> x.getRequest().equals(request)).findFirst().map(Proxy::getActiveResponse).get();
             if (ret.getBodyType() == BodyTypes.STRING)
                 return ret;
         }
-        try {
-            var dev = "https://api.dev.gray.net";
-            var envs = new String[]{dev};
-            for (var env : envs) {
+        var envs = environment.getProperty("relay.env").split(",");
+        for (var env : envs) {
+            try {
                 var url = new URL(env + request.getPath() +/* encodeParameters(request) +*/ encodeQueryString(request));
                 var con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod(request.getMethod().toString());
@@ -69,7 +73,7 @@ public class Sender {
                         response.setBodyType(BodyTypes.BINARY);
                         response.setBody(con.getInputStream().readAllBytes());
                     }
-                    logger.log(request.getPath(), String.valueOf(response.getStatusCode()));
+                    logger.log(request.getPath(), String.valueOf(response.getStatusCode()), env);
                     proxyRepository.addProxy(request, response);
                     return response;
                 } else {
@@ -77,10 +81,10 @@ public class Sender {
                     response.setBody(con.getResponseMessage());
                     logger.logFailedRequest(request, con.getResponseMessage(), String.valueOf(response.getStatusCode()), "url=" + url.toString());
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+                logger.log(e, env);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-            logger.log(e);
         }
         return response;
     }
