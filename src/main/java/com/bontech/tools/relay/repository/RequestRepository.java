@@ -1,6 +1,6 @@
-package com.bontech.tools.loadbalancer.repository;
+package com.bontech.tools.relay.repository;
 
-import com.bontech.tools.loadbalancer.model.Request;
+import com.bontech.tools.relay.model.Request;
 
 import java.util.HashSet;
 import java.util.Set;

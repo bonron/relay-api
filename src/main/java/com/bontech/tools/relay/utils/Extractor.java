@@ -1,8 +1,8 @@
-package com.bontech.tools.loadbalancer.utils;
+package com.bontech.tools.relay.utils;
 
-import com.bontech.tools.loadbalancer.model.Request;
-import com.bontech.tools.loadbalancer.model.enums.BodyTypes;
-import com.bontech.tools.loadbalancer.model.enums.RequestMethods;
+import com.bontech.tools.relay.model.Request;
+import com.bontech.tools.relay.model.enums.BodyTypes;
+import com.bontech.tools.relay.model.enums.RequestMethods;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;

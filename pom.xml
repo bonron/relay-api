@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.bontech.tools</groupId>
-    <artifactId>load-balancer</artifactId>
+    <artifactId>relay-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>load-balancer</name>
+    <name>relay-api</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

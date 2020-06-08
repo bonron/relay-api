@@ -1,9 +1,9 @@
-package com.bontech.tools.loadbalancer.repository;
+package com.bontech.tools.relay.repository;
 
-import com.bontech.tools.loadbalancer.model.Proxy;
-import com.bontech.tools.loadbalancer.model.Request;
-import com.bontech.tools.loadbalancer.model.Response;
-import com.bontech.tools.loadbalancer.utils.Logger;
+import com.bontech.tools.relay.model.Proxy;
+import com.bontech.tools.relay.model.Request;
+import com.bontech.tools.relay.model.Response;
+import com.bontech.tools.relay.utils.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

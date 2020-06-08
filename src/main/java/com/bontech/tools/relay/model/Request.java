@@ -1,6 +1,6 @@
-package com.bontech.tools.loadbalancer.model;
+package com.bontech.tools.relay.model;
 
-import com.bontech.tools.loadbalancer.model.enums.RequestMethods;
+import com.bontech.tools.relay.model.enums.RequestMethods;
 
 import java.io.Serializable;
 import java.util.Map;

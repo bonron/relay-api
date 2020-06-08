@@ -1,6 +1,6 @@
-package com.bontech.tools.loadbalancer.model;
+package com.bontech.tools.relay.model;
 
-import com.bontech.tools.loadbalancer.model.enums.BodyTypes;
+import com.bontech.tools.relay.model.enums.BodyTypes;
 
 import java.io.Serializable;
 import java.util.*;

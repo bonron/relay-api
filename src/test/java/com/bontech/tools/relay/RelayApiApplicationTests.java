@@ -1,10 +1,10 @@
-package com.bontech.tools.loadbalancer;
+package com.bontech.tools.relay;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LoadBalancerApplicationTests {
+class RelayApiApplicationTests {
 
     @Test
     void contextLoads() {

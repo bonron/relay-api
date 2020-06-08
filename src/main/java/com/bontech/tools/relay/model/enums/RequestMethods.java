@@ -1,4 +1,4 @@
-package com.bontech.tools.loadbalancer.model.enums;
+package com.bontech.tools.relay.model.enums;
 
 import java.io.Serializable;
 

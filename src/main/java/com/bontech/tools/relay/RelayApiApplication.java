@@ -1,13 +1,13 @@
-package com.bontech.tools.loadbalancer;
+package com.bontech.tools.relay;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LoadBalancerApplication {
+public class RelayApiApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(LoadBalancerApplication.class, args);
+        SpringApplication.run(RelayApiApplication.class, args);
     }
 
 }

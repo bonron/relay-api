@@ -1,10 +1,10 @@
-package com.bontech.tools.loadbalancer.controller;
+package com.bontech.tools.relay.controller;
 
-import com.bontech.tools.loadbalancer.model.enums.BodyTypes;
-import com.bontech.tools.loadbalancer.repository.RequestRepository;
-import com.bontech.tools.loadbalancer.utils.Extractor;
-import com.bontech.tools.loadbalancer.utils.Logger;
-import com.bontech.tools.loadbalancer.utils.Sender;
+import com.bontech.tools.relay.model.enums.BodyTypes;
+import com.bontech.tools.relay.repository.RequestRepository;
+import com.bontech.tools.relay.utils.Extractor;
+import com.bontech.tools.relay.utils.Logger;
+import com.bontech.tools.relay.utils.Sender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

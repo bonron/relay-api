@@ -1,4 +1,4 @@
-package com.bontech.tools.loadbalancer.model;
+package com.bontech.tools.relay.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

@@ -1,11 +1,10 @@
-package com.bontech.tools.loadbalancer.utils;
+package com.bontech.tools.relay.utils;
 
-import com.bontech.tools.loadbalancer.model.Proxy;
-import com.bontech.tools.loadbalancer.model.Request;
-import com.bontech.tools.loadbalancer.model.Response;
-import com.bontech.tools.loadbalancer.model.enums.BodyTypes;
-import com.bontech.tools.loadbalancer.model.enums.RequestMethods;
-import com.bontech.tools.loadbalancer.repository.ProxyRepository;
+import com.bontech.tools.relay.model.Request;
+import com.bontech.tools.relay.model.Response;
+import com.bontech.tools.relay.model.enums.BodyTypes;
+import com.bontech.tools.relay.model.enums.RequestMethods;
+import com.bontech.tools.relay.repository.ProxyRepository;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;

@@ -1,8 +1,8 @@
-package com.bontech.tools.loadbalancer.utils;
+package com.bontech.tools.relay.utils;
 
 
-import com.bontech.tools.loadbalancer.model.Proxy;
-import com.bontech.tools.loadbalancer.model.Request;
+import com.bontech.tools.relay.model.Proxy;
+import com.bontech.tools.relay.model.Request;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
