@@ -1,8 +1,8 @@
 {
   "properties": [
     {
-      "name": "relay.env",
+      "name": "relay.routes",
       "type": "java.lang.String",
       "description": "Used for configuring environments usable by the relay api in their order of usage."
-  }
-] }
+    }
+  ] }

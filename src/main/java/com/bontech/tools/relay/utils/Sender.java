@@ -20,16 +20,16 @@ import static java.net.HttpURLConnection.HTTP_OK;
 @Service
 public class Sender {
 
-    final Logger logger;
+    private final Logger logger;
 
-    final ProxyRepository proxyRepository;
+    private final ProxyRepository proxyRepository;
 
-    final Environment environment;
+    private String[] routes;
 
     public Sender(Logger logger, Environment environment) {
         this.logger = logger;
         proxyRepository = ProxyRepository.getInstance();
-        this.environment = environment;
+        routes = environment.getProperty("relay.routes").split(",");
     }
 
     public Response send(Request request) {
@@ -39,8 +39,7 @@ public class Sender {
             if (ret.getBodyType() == BodyTypes.STRING)
                 return ret;
         }
-        var envs = environment.getProperty("relay.env").split(",");
-        for (var env : envs) {
+        for (var env : routes) {
             try {
                 var url = new URL(env + request.getPath() +/* encodeParameters(request) +*/ encodeQueryString(request));
                 var con = (HttpURLConnection) url.openConnection();
